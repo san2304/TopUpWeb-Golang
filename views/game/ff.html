@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Fire</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="/assets/css/gameff.css">
+    <style>
+        .diamond-option.out-of-stock {
+            background-color: #ccc;
+            color: #888;
+            cursor: not-allowed;
+        }
+
+        #idPlayerInput {
+            width: 400px;
+            height: 35px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .pppp {
+            font-size: 11px;
+            margin-top: 5px;
+            /* Add margin to separate from other elements */
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <div class="logo">
+                <img src="/assets/img/logo.png" alt="Game Top-Up Logo">
+            </div>
+            <!-- Grid system untuk menempatkan search di samping logo -->
+            <div class="row">
+                <div class="col-lg-4">
+                    <!-- Tombol toggler untuk tampilan mobile -->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </div>
+            <!-- Menu navigasi -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    <a class="nav-link active" href="/invoice">Lacak Pesanan</a>
+                    <a class="nav-link active" href="/contact">Kontak Kami</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="col-md-12 text-center">
+            <div class="banner">
+                <img src="/assets/img/ff-cover.jpg" alt="Top-Up Banner" class="img-fluid">
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="content-box">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="/assets/img/ff.png" alt="Game Image" style="border-radius: 5px;">
+                        </div>
+                        <div class="col-md-6">
+                            <h4 style="margin: 40px;">Free Fire</h4>
+                        </div>
+                    </div>
+                    <div style="margin-top: 30px;">
+                        <p>TOP UP DIAMOND FREE FIRE Proses cepat 3 detik setelah pembayaran Open 24 hours <br>
+                            Cara order : <br>
+                            1. Masukkan ID <br>
+                            2. Pilih nominal diamond <br>
+                            3. Pilih metode pembayaran <br>
+                            4. Masukkan nomor Whatsapp dengan benar! <br>
+                            5. Klik beli sekarang dan lakukan pembayaran <br>
+                            6. Diamond akan masuk otomatis ke akun anda <br><br>
+                            UANG TRANSFER SESUAI TOTAL TAGIHAN !!!
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="content-box">
+                    <h5>Masukkan ID Player</h5>
+                    <hr>
+                    <input id="idPlayerInput" type="text" placeholder="ID Player">
+                    <p class="pppp">Untuk menemukan ID Pemain Anda, klik gambar avatar Anda di pojok kiri atas layar
+                        Anda. ID Pemain Anda akan ditampilkan di bawah nama pengguna Anda.</p>
+                </div>
+
+                <div class="content-box">
+                    <h5>Pilih Nominal Top Up</h5>
+                    <hr>
+                    <div class="diamond-options-container">
+                        {{ range .DiamondOptions }}
+                        {{ if eq .Stock 0 }}
+                        <button class="diamond-option out-of-stock" data-value="{{ .Value }}" data-price="{{ .Harga }}"
+                            data-stock="{{ .Stock }}" disabled>
+                            {{ else }}
+                            <button class="diamond-option" data-value="{{ .Value }}" data-price="{{ .Harga }}"
+                                data-stock="{{ .Stock }}" onclick="selectDiamond(this)">
+                                {{ end }}
+                                <span class="dm-text">{{ .Value }}</span>
+                                <span class="price-text">Harga : Rp{{ .Harga }}</span>
+                            </button>
+                            {{ end }}
+                    </div>
+                </div>
+                <div class="content-box">
+                    <h5>Pilih Pembayaran</h5>
+                    <hr>
+                    <div class="expandable-box" id="myExpandableBox1">
+                        <div class="expandable-content">
+                            <h6>Ewalet</h6>
+                            <div class="expand-btn" onclick="toggleExpand('myExpandableBox1')">
+                                <span class="expand-icon">▼</span>
+                            </div>
+                            <div class="payment-box">
+                                <div class="payment-option" onclick="handlePaymentClick('Payment 1')"><img
+                                        src="/assets/img/bca.jpg" alt=""></div>
+                                <div class="payment-option" onclick="handlePaymentClick('Payment 2')"><img
+                                        src="/assets/img/bca.jpg" alt=""></div>
+                                <div class="payment-option" onclick="handlePaymentClick('Payment 3')"><img
+                                        src="/assets/img/bca.jpg" alt=""></div>
+                                <div class="payment-option" onclick="handlePaymentClick('Payment 4')"><img
+                                        src="/assets/img/bca.jpg" alt=""></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="expandable-box" id="myExpandableBox2">
+                        <div class="expandable-content">
+                            <h6>Bank</h6>
+                            <div class="expand-btn" onclick="toggleExpand('myExpandableBox2')">
+                                <span class="expand-icon">▼</span>
+                            </div>
+                            <div class="payment-box">
+                                <div class="payment-option" onclick="handlePaymentClick('Bank Payment 1')"><img
+                                        src="/assets/img/bank1.jpg" alt=""></div>
+                                <div class="payment-option" onclick="handlePaymentClick('Bank Payment 2')"><img
+                                        src="/assets/img/bank2.jpg" alt=""></div>
+                                <div class="payment-option" onclick="handlePaymentClick('Bank Payment 3')"><img
+                                        src="/assets/img/bank3.jpg" alt=""></div>
+                                <div class="payment-option" onclick="handlePaymentClick('Bank Payment 4')"><img
+                                        src="/assets/img/bank4.jpg" alt=""></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofGJPUFXl6uAqIm2hjI6iHHRoLs" crossorigin="anonymous"></script>
+<script>
+    let selectedButton = null;
+
+    function selectDiamond(button) {
+        // Reset tombol sebelumnya
+        if (selectedButton) {
+            selectedButton.classList.remove('selected');
+        }
+
+        // Pilih tombol yang diklik
+        button.classList.add('selected');
+        selectedButton = button;
+
+        // Lakukan sesuatu dengan nilai diamond yang dipilih (gantilah dengan aksi sesuai kebutuhan)
+        console.log(`Selected Diamond Value: ${button.dataset.value}`);
+    }
+
+    function toggleExpand(boxId) {
+        var expandableBoxes = document.querySelectorAll('.expandable-box');
+        var expandIcon = document.getElementById(boxId).querySelector('.expand-icon');
+
+        // Menutup semua kotak yang dapat diperluas
+        expandableBoxes.forEach(function (box) {
+            if (box.id !== boxId && box.classList.contains('expanded')) {
+                box.classList.remove('expanded');
+                box.querySelector('.expand-icon').innerHTML = '▼';
+            }
+        });
+
+        // Toggle 'expanded' class untuk kotak yang dipilih
+        var expandableBox = document.getElementById(boxId);
+        expandableBox.classList.toggle('expanded');
+
+        // Toggle ikon antara ▼ dan ▲
+        expandIcon.innerHTML = (expandIcon.innerHTML === '▼') ? '▲' : '▼';
+    }
+
+    function handlePaymentClick(paymentName) {
+        // Handle klik pada opsi pembayaran
+        var paymentOption = event.target;
+
+        // Hapus kelas 'selected' dari semua opsi pembayaran
+        var allPaymentOptions = document.querySelectorAll('.payment-option');
+        allPaymentOptions.forEach(function (option) {
+            option.classList.remove('selected');
+        });
+
+        // Tambahkan kelas 'selected' ke opsi pembayaran yang diklik
+        paymentOption.classList.add('selected');
+    }
+</script>
+
+</html>

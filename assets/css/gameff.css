@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-nav {
+    text-align: right;
+}
+
+.navbar-collapse {
+    justify-content: flex-end;
+}
+
+.logo img {
+    max-width: 100px;
+}
+
+.banner {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.banner img {
+    width: 100%;
+    height: 300px;
+}
+
+.content-box {
+    background-color: #aed6f1;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.container{
+    padding: 20px;
+}
+.diamond-options-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.diamond-option {
+    width: 30%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    position: relative;
+    cursor: pointer;
+    padding: 10px 20px;
+    border: 2px solid #1a94e6;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #3498db;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.diamond-option .text-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: left;
+}
+
+.diamond-option .dm-text {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.diamond-option .price-text {
+    font-size: 12px;
+}
+
+.diamond-option.selected {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.expandable-box {
+    overflow: hidden;
+    transition: height 0.3s;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+    position: relative;
+}
+
+.expandable-content {
+    padding: 10px;
+}
+
+.expand-btn {
+    cursor: pointer;
+    text-align: center;
+    padding: 5px;
+    background-color: #7a7a7a;
+    color: #fff;
+    user-select: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.payment-box {
+    display: none;
+    flex-wrap: wrap;
+}
+
+.payment-option {
+    width: calc(25% - 10px);
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.payment-option img{
+    border-radius: 5px;
+    width: 100%;
+}
+
+.payment-option:hover {
+    background-color: #f0f0f0;
+}
+
+.payment-option.selected {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.expanded .payment-box {
+    display: flex;
+}
+
+.expand-icon {
+    transition: transform 0.3s;
+}
+
+.expanded .expand-icon {
+    transform: rotate(180deg);
+}
