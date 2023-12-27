@@ -7,7 +7,7 @@ import (
 	"topup-game/models"
 )
 
-func CheckInvoiceHandler(w http.ResponseWriter, r *http.Request) {
+func RiwayatInvoiceHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		// Mengambil nilai InvoiceNumber dari formulir HTTP
 		InvoiceNumberStr := r.FormValue("invoiceNumber")
@@ -25,7 +25,7 @@ func CheckInvoiceHandler(w http.ResponseWriter, r *http.Request) {
 		}
 
 		// Menyiapkan dan mengeksekusi template HTML
-		tmpl, err := template.ParseFiles("views/navbar/check-invoice.html")
+		tmpl, err := template.ParseFiles("views/navbar/riwayat-invoice.html")
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return

@@ -6,10 +6,38 @@
 body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
     font-family: Arial, sans-serif; 
 }
 
+.diamond-option.out-of-stock {
+    background-color: #ccc;
+    color: #888;
+    cursor: not-allowed;
+}
+
+#idPlayerInput {
+    width: 400px;
+    height: 35px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#noWaInput {
+    width: 400px;
+    height: 35px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.pppp {
+    font-size: 11px;
+    margin-top: 5px;
+}
+.ppp{
+    font-size: 14px;
+}
 .navbar-nav {
     text-align: right;
 }
@@ -44,6 +72,7 @@ body {
 .container{
     padding: 20px;
 }
+
 .diamond-options-container {
     display: flex;
     flex-wrap: wrap;
@@ -57,7 +86,7 @@ body {
     position: relative;
     cursor: pointer;
     padding: 10px 20px;
-    border: 2px solid #1a94e6;
+    border: 1px solid #3498db;
     border-radius: 5px;
     background-color: #fff;
     color: #3498db;
@@ -116,26 +145,44 @@ body {
 }
 
 .payment-option {
-    width: calc(25% - 10px);
-    padding: 10px;
-    border-radius: 5px;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    position: relative;
     cursor: pointer;
-    transition: background-color 0.3s;
+    padding: 10px;
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #3498db;
+    transition: background-color 0.3s, color 0.3s, filter 0.3s;
 }
 
-.payment-option img{
+.payment-option img {
     border-radius: 5px;
-    width: 100%;
+    width: 60px; /* Sesuaikan ukuran gambar sesuai kebutuhan */
+    margin-right: 10px;
+}
+
+.payment-option .text-container {
+    flex-grow: 1;
+    text-align: left;
 }
 
 .payment-option:hover {
     background-color: #f0f0f0;
 }
 
+.payment-option {
+    transition: filter 0.3s;
+}
+
 .payment-option.selected {
     background-color: #3498db;
     color: #fff;
+    border: 2px solid white;
 }
 
 .expanded .payment-box {
@@ -148,4 +195,46 @@ body {
 
 .expanded .expand-icon {
     transform: rotate(180deg);
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.price {
+    color: black;
+    text-align: right;
+    margin-left: 10px; /* Jarak antara gambar dan teks harga */
+}
+
+.expandable-content {
+    position: relative;
+}
+
+.ewallet-images {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-80%);
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+}
+
+.ewallet-images img {
+    width: 50px;
+    margin-right: 5px;
+}
+
+.order-now-button {
+    cursor: pointer;
+    border: 1px solid #3498db;
+    text-align: center;
+    height: 50px;
+}
+
+.order-now-button:hover {
+    background-color: #3498db;
 }

@@ -5,8 +5,8 @@ import (
 	"net/http"
 )
 
-func Invoice(w http.ResponseWriter, r *http.Request) {
-	temp, err := template.ParseFiles("views/navbar/invoice.html")
+func Riwayat(w http.ResponseWriter, r *http.Request) {
+	temp, err := template.ParseFiles("views/navbar/riwayat.html")
 	if err != nil {
 		panic(err)
 	}

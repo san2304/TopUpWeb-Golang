@@ -65,12 +65,14 @@ body {
 #ul li button {
     text-decoration: none;
     color: #fff;
-    background-color: blue;
+    background-color: darkgray;
     border: none;
     font-weight: bold;
     cursor: pointer;
     padding: 13px 22px;
     font-size: 15px;
+    border-radius: 10px;
+    border: 2px solid white;
 }
 
 #ul li.active button {
