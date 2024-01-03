@@ -76,7 +76,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="col-md-8">
                 <div class="content-box">
                     <h5>Masukkan ID Player</h5>
@@ -230,9 +229,12 @@
                     <p class="ppp">Masukan Nomor Whatsapp</p>
                     <input id="noWaInput" type="text" placeholder="08XXXXXXXXXX">
                 </div>
-                <div class="content-box order-now-button">
-                    <a href="/checkout"></a>
-                    <h5 style="transform: translateY(-10%);">Order Now</h5>
+                <div class="content-box order-now-button" onclick="submitOrder()">
+                    <a href="/checkout" id="orderNowBtn">
+                        <h5 style="transform: translateY(-10%); cursor: pointer;" onclick="redirectToCheckout()">Order
+                            Now
+                        </h5>
+                    </a>
                 </div>
             </div>
         </div>

@@ -3,12 +3,13 @@ package entities
 import "time"
 
 type Invoice struct {
-	ID            int
-	InvoiceNumber int
-	PhoneNumber   int
-	Harga         int64
-	Status        StatusType
-	CreatedAt     time.Time
+	InvoiceID   int
+	DataID      int
+	ProductID   int
+	Payment     string
+	PhoneNumber int64
+	Status      StatusType
+	Time        time.Time
 }
 
 type StatusType string

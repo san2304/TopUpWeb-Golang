@@ -18,7 +18,7 @@ func RiwayatInvoiceHandler(w http.ResponseWriter, r *http.Request) {
 		}
 
 		// Memanggil fungsi GetInvoiceByNumber dengan nilai InvoiceNumber yang sudah diubah
-		result, err := models.GetInvoiceByNumber(InvoiceNumber)
+		result, err := models.GetInvoiceByID(InvoiceNumber)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return

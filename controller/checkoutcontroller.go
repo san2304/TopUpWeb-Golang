@@ -6,7 +6,7 @@ import (
 )
 
 func Checkout(w http.ResponseWriter, r *http.Request) {
-	temp, err := template.ParseFiles("views/navbar/contact.html")
+	temp, err := template.ParseFiles("views/game/checkout.html")
 	if err != nil {
 		panic(err)
 	}

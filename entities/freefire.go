@@ -1,8 +1,9 @@
 package entities
 
 type DiamondOption struct {
-	ID    int
-	Value string
-	Harga int
-	Stock int
+	ProductID   int
+	ProductName string
+	Value       string
+	Harga       int
+	Stock       int
 }
