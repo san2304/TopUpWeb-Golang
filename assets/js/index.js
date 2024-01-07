@@ -24,3 +24,19 @@ document.addEventListener('DOMContentLoaded', function () {
         lazy: true,
     });
 });
+
+function toggleContent(contentId, button) {
+    // Menyembunyikan semua konten
+    $(".content").hide();
+
+    // Menampilkan atau menyembunyikan konten yang dipilih
+    $("#" + contentId).show();
+
+    // Menghapus kelas "active" dari semua tombol dengan kelas "dert"
+    $(".btn.dert").removeClass("active");
+
+    // Menambahkan kelas "active" pada tombol yang diklik
+    $(button).addClass("active");
+}
+
+

@@ -17,8 +17,8 @@ func RiwayatInvoiceHandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		// Memanggil fungsi GetInvoiceByNumber dengan nilai InvoiceNumber yang sudah diubah
-		result, err := models.GetInvoiceByID(InvoiceNumber)
+		// Memanggil fungsi GetInvoiceWithProductByID dengan nilai InvoiceNumber yang sudah diubah
+		result, err := models.GetInvoiceWithProductByID(InvoiceNumber)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
@@ -31,7 +31,16 @@ func RiwayatInvoiceHandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		tmpl.Execute(w, struct{ Result *models.Invoice }{Result: result})
+		// Menyiapkan struktur data baru yang sesuai dengan template HTML
+		data := struct {
+			Result       *models.InvoiceWithProduct
+			InvoiceExist bool
+		}{
+			Result:       result,
+			InvoiceExist: result != nil,
+		}
+
+		tmpl.Execute(w, data)
 	} else {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 	}

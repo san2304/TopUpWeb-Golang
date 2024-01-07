@@ -3,12 +3,26 @@ package controller
 import (
 	"html/template"
 	"net/http"
+	"topup-game/models"
 )
 
 func Checkout(w http.ResponseWriter, r *http.Request) {
-	temp, err := template.ParseFiles("views/game/checkout.html")
+	latestInvoiceWithProduct, err := models.GetLatestInvoiceWithProduct()
 	if err != nil {
-		panic(err)
+		http.Error(w, "Error getting latest invoice: "+err.Error(), http.StatusInternalServerError)
+		return
 	}
-	temp.Execute(w, nil)
+
+	templatePath := "views/game/checkout.html"
+	tmpl, err := template.ParseFiles(templatePath)
+	if err != nil {
+		http.Error(w, "Error parsing template: "+err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	err = tmpl.Execute(w, latestInvoiceWithProduct)
+	if err != nil {
+		http.Error(w, "Error executing template: "+err.Error(), http.StatusInternalServerError)
+		return
+	}
 }

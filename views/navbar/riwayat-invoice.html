@@ -47,6 +47,22 @@
             margin-right: 10px;
             /* Memberikan margin kanan antar elemen, kecuali yang terakhir */
         }
+
+        .success-status {
+            color: green;
+        }
+
+        .process-status {
+            color: blue;
+        }
+
+        .unpaid-status {
+            color: gray;
+        }
+
+        .failed-status {
+            color: red;
+        }
     </style>
 
 
@@ -110,6 +126,9 @@
                     <th>Tanggal</th>
                     <th>Invoice Number</th>
                     <th>Phone Number</th>
+                    <th>Nama Produk</th>
+                    <th>Jenis Produk</th>
+                    <th>Harga</th>
                     <th>Pembayaran</th>
                     <th>Status</th>
                 </tr>
@@ -119,8 +138,11 @@
                     <td>{{.Result.Time.Format "2006-01-02 15:04"}}</td>
                     <td>{{.Result.InvoiceID}}</td>
                     <td>{{.Result.PhoneNumber}}</td>
+                    <td>{{.Result.ProductName}}</td>
+                    <td>{{.Result.Value}}</td>
+                    <td>{{.Result.Harga}}</td>
                     <td>{{.Result.Payment}}</td>
-                    <td>{{.Result.Status}}</td>
+                    <td class="status-success">{{.Result.Status}}</td>
                 </tr>
             </tbody>
         </table>
@@ -129,10 +151,12 @@
     <p style="text-align: center;">Invoice tidak ditemukan</p>
     {{ end }}
 
+
+
     <footer style="background-color: gray; padding: 20px;">
         <div class="wrap">
             <div class="footer-one">
-                <img src="/assets/img/logo.png" alt="Game Top-Up Logo" width="60px">
+                <img src="/assets/img/logo.png" alt="Game Top-Up Logo" width="150px; margin-bottom :40px;">
                 <p>Arrow Game Store adalah tempat top up games yang aman, murah dan terpercaya.
                     Proses cepat 1-3 Detik. Open 24 jam. Payment terlengkap. Jika ada kendala silahkan klik logo CS pada
                     kanan bawah di website ini.</p>

@@ -4,6 +4,6 @@ type DiamondOption struct {
 	ProductID   int
 	ProductName string
 	Value       string
-	Harga       int
+	Harga       int64
 	Stock       int
 }

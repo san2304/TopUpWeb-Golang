@@ -47,8 +47,8 @@ body {
 }
 
 .logo img {
-    width: 50px;
-    height: 50px;
+    width: 150px;
+    margin-right:  20px;
 }
 
 .banner {
@@ -231,11 +231,63 @@ body {
 
 .order-now-button {
     cursor: pointer;
-    border: 1px solid #3498db;
     text-align: center;
     height: 50px;
 }
 
 .order-now-button:hover {
     background-color: #3498db;
+}
+.content-box a {
+    color: black;  /* Mengatur warna teks menjadi hitam */
+    text-decoration: none;  /* Menghilangkan garis bawah pada link */
+}
+
+.wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.footer-one {
+    max-width: 40%;
+    text-align: left;
+}
+
+.footer-two {
+    max-width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.payment {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start; /* Menggeser elemen ke sisi kiri */
+}
+
+.payment li {
+    margin-bottom: 10px;
+}
+
+.payment img {
+    border-radius: 0.3rem;
+    width: 6rem; /* Mengurangi lebar gambar */
+    height: auto; /* Menyesuaikan tinggi sesuai lebar */
+}
+
+footer {
+    margin-top: auto; /* Menempelkan footer di bagian bawah */
+    background-color: gray;
+    padding: 20px;
 }
