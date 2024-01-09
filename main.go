@@ -4,27 +4,35 @@ import (
 	"log"
 	"net/http"
 	"topup-game/config"
-	"topup-game/controller"
+	"topup-game/controllers/checkoutcontroller"
+	"topup-game/controllers/dashboardcontroller"
+	"topup-game/controllers/gamecontroller"
 )
 
 func main() {
 	config.ConnectDB()
+	defer config.DB.Close()
 
-	//Assets
-	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("assets"))))
+	http.HandleFunc("/assets/", func(w http.ResponseWriter, r *http.Request) {
+		http.StripPrefix("/assets/", http.FileServer(http.Dir("assets"))).ServeHTTP(w, r)
+	})
 
-	// Navigation
-	http.HandleFunc("/", controller.Dashboard)
-	http.HandleFunc("/contact", controller.Contact)
-	http.HandleFunc("/riwayat", controller.Riwayat)
-	http.HandleFunc("/riwayat-invoice", controller.RiwayatInvoiceHandler)
+	http.HandleFunc("/", dashboardcontroller.Home)
+	http.HandleFunc("/contact", dashboardcontroller.Contact)
+	http.HandleFunc("/riwayat", dashboardcontroller.Riwayat)
+	http.HandleFunc("/riwayat-invoice", dashboardcontroller.RiwayatInvoiceHandler)
 
-	//Game
-	http.HandleFunc("/freefire", controller.Freefire)
+	http.HandleFunc("/freefire", gamecontroller.Freefire)
+	http.HandleFunc("/mlbb", gamecontroller.Mlbb)
 
-	//Checkout
-	http.HandleFunc("/checkout", controller.Checkout)
+	http.HandleFunc("/checkout", checkoutcontroller.Checkout)
+
+	server := &http.Server{Addr: ":8080"}
 
 	log.Println("Server running on port 8080")
-	http.ListenAndServe(":8080", nil)
+	if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+		log.Fatal("Server error:", err)
+	}
+
+	log.Println("Server stopped")
 }

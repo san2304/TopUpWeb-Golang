@@ -14,29 +14,31 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a href="/">
-                <div class="logo">
-                    <img src="/assets/img/logo.png" alt="Game Top-Up Logo">
-                </div>
+            <a href="/" class="navbar-brand">
+                <img src="/assets/img/logo.png" alt="Game Top-Up Logo" style="width: 130px;">
             </a>
-            <!-- Grid system untuk menempatkan search di samping logo -->
-            <div class="row">
-                <div class="col-lg-4">
-                    <!-- Tombol toggler untuk tampilan mobile -->
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
-            </div>
-            <!-- Menu navigasi -->
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
-                    <a class="nav-link active" href="/riwayat">Lacak Pesanan</a>
-                    <a class="nav-link active" href="/contact">Kontak Kami</a>
-                </div>
+            <form class="d-none d-lg-flex mt-2">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            <!-- Tombol toggler untuk tampilan mobile -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home <span class="sr-only"></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/riwayat">Cek Pesanan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Kontak Kami</a>
+                    </li>
+                </ul>
+
             </div>
         </div>
     </nav>
@@ -47,12 +49,11 @@
                 <div class="content-box1">
                     <h5>Nomor Invoice : <strong>{{.InvoiceID}}</strong></h5>
                     <p style="font-size: 14px;">Simpan Nomor Invoice Untuk Cek Pesanan</p>
-
                 </div>
                 <div class="content-box2 text-center">
                     <p style="font-size: 14px;">Untuk menyelesaikan proses transaksi, silahkan lakukan pembayaran
                         sejumlah:</p>
-                    <h1><strong>{{.Harga}}</strong></h1>
+                    <h1><strong><span id="formattedHarga">Rp{{.Harga}}</span></strong></h1>
                     <h6>PENTING! Transfer yang benar, Jangan lebih, Jangan kurang, <strong> HARUS SESUAI
                             !!!</strong></h6>
                 </div>
@@ -67,7 +68,7 @@
                     <h6 style="margin-left: 20px;"><strong>QIRIS All Payment</strong></h6>
                 </div>
                 <div class="content-box2 text-center">
-                    <h5>Nominal Pembayaran : <strong>{{.Harga}}</strong></h5>
+                    <h5>Nominal Pembayaran : <strong>Rp{{.Harga}}</strong></h5>
                     <p style="font-size: 14px;">Salah Nominal Pembayaran Akan Di Proses lama</p>
                     <h5>Batas Waktu Pembayaran :</h5>
                     <div id="countdown" class="countdown"></div>

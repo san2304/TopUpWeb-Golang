@@ -18,29 +18,29 @@ body {
     justify-content: flex-end;
 }
 
-.logo img {
-    width: 150px;
-    margin-right:  20px;
-}
-
 .swiper-container {
-    height: 450px;
-    margin:10px auto;
+    width: 100%;
+    height: 100%;
+    max-height: 500px;
+    margin: 10px auto;
     overflow: hidden;
 }
 
 .swiper-wrapper {
     display: flex;
+    height: 100%; /* Set the height to 100% for the wrapper */
 }
 
 .swiper-slide {
-    width: 100%; /* Mulai dengan tingkat transparansi 0 */
-    transition: opacity 0.5s ease; /* Efek transisi pada tingkat transparansi */
+    width: 100%;
+    transition: opacity 0.5s ease;
+    display: flex; /* Add display flex to align items */
 }
 
 .swiper-slide img {
     width: 100%;
     height: auto;
+    object-fit: cover; /* Ensure the image covers the entire slide */
 }
 
 .dert{
@@ -52,27 +52,12 @@ body {
     background-color: #387bce; /* Warna biru tua saat tombol aktif */
 }
 
+/* Desktop styles */
 .content {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(calc(16.666% - 20px), 1fr));
     gap: 20px;
-    margin: 30px 20px 20px 0px;
-    justify-content: space-between; /* Menambahkan properti ini */
-    .content {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-}
-
-.image-container {
-    flex-grow: 1;
-    position: relative;
-    overflow: hidden;
-    display: block;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-}
-
+    margin: 30px 0 20px 0;
 }
 
 .image-container {
@@ -82,6 +67,18 @@ body {
     border: 1px solid #ccc;
     border-radius: 8px;
     width: 100%;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) { /* Adjust the breakpoint as needed */
+    .content {
+        grid-template-columns: repeat(auto-fill, minmax(calc(25% - 20px), 1fr)); /* Example: 2 columns in mobile */
+        margin: 15px 0 10px 0; /* Adjusted margin for mobile */
+    }
+
+    .image-container {
+        width: 100%;
+    }
 }
 
 .image-container:hover {
@@ -98,7 +95,7 @@ body {
 
 .text-overlay {
     position: absolute;
-    bottom: 0; /* Perubahan pada bagian ini agar text-overlay berada di bawah */
+    bottom: 0;
     left: 0;
     width: 100%;
     height: auto;
@@ -114,7 +111,6 @@ body {
 .image-container:hover .text-overlay {
     opacity: 1;
 }
-
 
 .wrap {
     display: flex;

@@ -1,4 +1,4 @@
-package controller
+package checkoutcontroller
 
 import (
 	"html/template"
@@ -13,7 +13,7 @@ func Checkout(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	templatePath := "views/game/checkout.html"
+	templatePath := "views/checkout/checkout.html"
 	tmpl, err := template.ParseFiles(templatePath)
 	if err != nil {
 		http.Error(w, "Error parsing template: "+err.Error(), http.StatusInternalServerError)

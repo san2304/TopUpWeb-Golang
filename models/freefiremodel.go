@@ -5,21 +5,26 @@ import (
 	"topup-game/entities"
 )
 
-func GetDiamondOptions() ([]entities.DiamondOption, error) {
-	rows, err := config.DB.Query("SELECT product_id, product_name, value, harga, stock FROM freefire")
+// GetProductFF mengembalikan semua produk dari database.
+func GetProductFF() ([]entities.Product, error) {
+	rows, err := config.DB.Query("SELECT product_id, product_name, value, harga, stock FROM product")
 	if err != nil {
 		return nil, err
 	}
 	defer rows.Close()
 
-	var options []entities.DiamondOption
+	var products []entities.Product
 	for rows.Next() {
-		var option entities.DiamondOption
-		if err := rows.Scan(&option.ProductID, &option.ProductName, &option.Value, &option.Harga, &option.Stock); err != nil {
+		var product entities.Product
+		if err := rows.Scan(&product.ProductID, &product.ProductName, &product.Value, &product.Harga, &product.Stock); err != nil {
 			return nil, err
 		}
-		options = append(options, option)
+
+		// Check if the ProductName is "Free Fire" before appending to products
+		if product.ProductName == "Free Fire" {
+			products = append(products, product)
+		}
 	}
 
-	return options, nil
+	return products, nil
 }

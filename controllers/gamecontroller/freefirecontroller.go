@@ -1,4 +1,4 @@
-package controller
+package gamecontroller
 
 import (
 	"html/template"
@@ -8,7 +8,7 @@ import (
 )
 
 func Freefire(w http.ResponseWriter, r *http.Request) {
-	diamondOptions, err := models.GetDiamondOptions()
+	product, err := models.GetProductFF()
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -20,5 +20,5 @@ func Freefire(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	tmpl.Execute(w, struct{ DiamondOptions []entities.DiamondOption }{DiamondOptions: diamondOptions})
+	tmpl.Execute(w, struct{ Products []entities.Product }{Products: product})
 }

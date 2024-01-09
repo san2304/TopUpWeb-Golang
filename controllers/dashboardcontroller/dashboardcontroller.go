@@ -1,11 +1,36 @@
-package controller
+package dashboardcontroller
 
 import (
 	"html/template"
 	"net/http"
 	"strconv"
+	"topup-game/entities"
 	"topup-game/models"
 )
+
+func Home(w http.ResponseWriter, r *http.Request) {
+	temp, err := template.ParseFiles("views/dashboard/index.html")
+	if err != nil {
+		panic(err)
+	}
+	temp.Execute(w, nil)
+}
+
+func Riwayat(w http.ResponseWriter, r *http.Request) {
+	temp, err := template.ParseFiles("views/dashboard/riwayat.html")
+	if err != nil {
+		panic(err)
+	}
+	temp.Execute(w, nil)
+}
+
+func Contact(w http.ResponseWriter, r *http.Request) {
+	temp, err := template.ParseFiles("views/dashboard/contact.html")
+	if err != nil {
+		panic(err)
+	}
+	temp.Execute(w, nil)
+}
 
 func RiwayatInvoiceHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
@@ -25,7 +50,7 @@ func RiwayatInvoiceHandler(w http.ResponseWriter, r *http.Request) {
 		}
 
 		// Menyiapkan dan mengeksekusi template HTML
-		tmpl, err := template.ParseFiles("views/navbar/riwayat-invoice.html")
+		tmpl, err := template.ParseFiles("views/dashboard/riwayat-invoice.html")
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
@@ -33,7 +58,7 @@ func RiwayatInvoiceHandler(w http.ResponseWriter, r *http.Request) {
 
 		// Menyiapkan struktur data baru yang sesuai dengan template HTML
 		data := struct {
-			Result       *models.InvoiceWithProduct
+			Result       *entities.InvoiceWithProduct
 			InvoiceExist bool
 		}{
 			Result:       result,

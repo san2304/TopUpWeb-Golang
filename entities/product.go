@@ -1,6 +1,6 @@
 package entities
 
-type DiamondOption struct {
+type Product struct {
 	ProductID   int
 	ProductName string
 	Value       string

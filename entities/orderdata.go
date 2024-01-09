@@ -2,14 +2,18 @@ package entities
 
 import "time"
 
-type Invoice struct {
+type InvoiceWithProduct struct {
 	InvoiceID   int
 	DataID      int
 	ProductID   int
 	Payment     string
+	Time        time.Time
 	PhoneNumber int64
 	Status      StatusType
-	Time        time.Time
+	ProductName string
+	Value       string
+	Harga       int64
+	Stock       int
 }
 
 type StatusType string

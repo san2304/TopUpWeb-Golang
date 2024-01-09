@@ -14,41 +14,36 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a href="/">
-                <div class="logo">
-                    <img src="/assets/img/logo.png" alt="Game Top-Up Logo">
-                </div>
+            <a href="/" class="navbar-brand">
+                <img src="/assets/img/logo.png" alt="Game Top-Up Logo" style="width: 130px;">
             </a>
-            <!-- Grid system untuk menempatkan search di samping logo -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <form class="d-none d-lg-flex ms-3">
-                        <!-- Menyembunyikan form saat navbar diperkecil -->
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                </div>
-                <div class="col-lg-4">
-                    <!-- Tombol toggler untuk tampilan mobile -->
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
-            </div>
-            <!-- Menu navigasi -->
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
-                    <a class="nav-link active" href="/riwayat">Lacak Pesanan</a>
-                    <a class="nav-link active" href="/contact">Kontak Kami</a>
-                </div>
+            <form class="d-none d-lg-flex mt-2">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            <!-- Tombol toggler untuk tampilan mobile -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home <span class="sr-only"></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/riwayat">Cek Pesanan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Kontak Kami</a>
+                    </li>
+                </ul>
+
             </div>
         </div>
     </nav>
 
-    <div class="invoice-container">
+    <div class="invoice-container col-md-10 text-center">
         <div class="invoice-box">
             <h1>Check Invoice</h1>
             <p>Pesanan Kamu tidak terdaftar meskipun Kamu yakin telah memesan? Harap tunggu 1-5 menit. Tetapi jika

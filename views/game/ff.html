@@ -14,29 +14,31 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a href="/">
-                <div class="logo">
-                    <img src="/assets/img/logo.png" alt="Game Top-Up Logo">
-                </div>
+            <a href="/" class="navbar-brand">
+                <img src="/assets/img/logo.png" alt="Game Top-Up Logo" style="width: 130px;">
             </a>
-            <!-- Grid system untuk menempatkan search di samping logo -->
-            <div class="row">
-                <div class="col-lg-4">
-                    <!-- Tombol toggler untuk tampilan mobile -->
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
-            </div>
-            <!-- Menu navigasi -->
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
-                    <a class="nav-link active" href="/riwayat">Lacak Pesanan</a>
-                    <a class="nav-link active" href="/contact">Kontak Kami</a>
-                </div>
+            <form class="d-none d-lg-flex mt-2">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            <!-- Tombol toggler untuk tampilan mobile -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home <span class="sr-only"></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/riwayat">Cek Pesanan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Kontak Kami</a>
+                    </li>
+                </ul>
+
             </div>
         </div>
     </nav>
@@ -56,10 +58,10 @@
                 <div class="content-box">
                     <div class="row">
                         <div class="col-md-6">
-                            <img src="/assets/img/ff.png" alt="Game Image" style="border-radius: 5px;">
+                            <img src="/assets/img/ff2.jpg" alt="Game Image" style="border-radius: 5px; width: 100%;">
                         </div>
                         <div class="col-md-6">
-                            <h4 style="margin: 40px;">Free Fire</h4>
+                            <h4 style="margin-top: 20px;"><strong>Free Fire</strong></h4>
                         </div>
                     </div>
                     <div style="margin-top: 30px;">
@@ -76,6 +78,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-md-8">
                 <div class="content-box">
                     <h5>Masukkan ID Player</h5>
@@ -89,7 +92,7 @@
                     <h5>Pilih Nominal Top Up</h5>
                     <hr>
                     <div class="diamond-options-container">
-                        {{ range .DiamondOptions }}
+                        {{ range .Products }}
                         {{ if eq .Stock 0 }}
                         <button class="diamond-option out-of-stock" data-value="{{ .Value }}" data-price="{{ .Harga }}"
                             data-stock="{{ .Stock }}" disabled>
@@ -124,26 +127,22 @@
                                 </div>
                             </div>
                             <div class="payment-box">
-                                <div class="payment-option" onclick="handlePaymentClick('Bank Payment 1')"
-                                    data-price="RpXXX">
+                                <div class="payment-option" onclick="handlePaymentClick('Shopee')" data-price="RpXXX">
                                     <img src="/assets/img/shoppe.jpg" alt="">
                                     <span class="price" id="selectedDiamondPrice1" style="display: none;">Rp<span
                                             id="priceValue1">RpXXX</span></span>
                                 </div>
-                                <div class="payment-option" onclick="handlePaymentClick('Bank Payment 2')"
-                                    data-price="RpXXX">
+                                <div class="payment-option" onclick="handlePaymentClick('Dana')" data-price="RpXXX">
                                     <img src="/assets/img/dana.jpg" alt="">
                                     <span class="price" id="selectedDiamondPrice1" style="display: none;">Rp<span
                                             id="priceValue2">RpXXX</span></span>
                                 </div>
-                                <div class="payment-option" onclick="handlePaymentClick('Bank Payment 3')"
-                                    data-price="RpXXX">
+                                <div class="payment-option" onclick="handlePaymentClick('Gopay')" data-price="RpXXX">
                                     <img src="/assets/img/gopay.jpg" alt="">
                                     <span class="price" id="selectedDiamondPrice1" style="display: none;">Rp<span
                                             id="priceValue3">RpXXX</span></span>
                                 </div>
-                                <div class="payment-option" onclick="handlePaymentClick('Bank Payment 4')"
-                                    data-price="RpXXX">
+                                <div class="payment-option" onclick="handlePaymentClick('QIRIS')" data-price="RpXXX">
                                     <img src="/assets/img/QRIS.png" alt="">
                                     <span class="price" id="selectedDiamondPrice1" style="display: none;">Rp<span
                                             id="priceValue4">RpXXX</span></span>
@@ -166,25 +165,22 @@
                                 </div>
                             </div>
                             <div class="payment-box">
-                                <div class="payment-option" onclick="handlePaymentClick('Bank Payment 5')"
-                                    data-price="RpXXX">
+                                <div class="payment-option" onclick="handlePaymentClick('Bank BCA')" data-price="RpXXX">
                                     <img src="/assets/img/bca.jpg" alt="">
                                     <span class="price" id="selectedDiamondPrice1" style="display: none;">Rp<span
                                             id="priceValue1">RpXXX</span></span>
                                 </div>
-                                <div class="payment-option" onclick="handlePaymentClick('Bank Payment 6')"
-                                    data-price="RpXXX">
+                                <div class="payment-option" onclick="handlePaymentClick('Bank BNI')" data-price="RpXXX">
                                     <img src="/assets/img/bni.jpg" alt="">
                                     <span class="price" id="selectedDiamondPrice1" style="display: none;">Rp<span
                                             id="priceValue2">RpXXX</span></span>
                                 </div>
-                                <div class="payment-option" onclick="handlePaymentClick('Bank Payment 7')"
-                                    data-price="RpXXX">
+                                <div class="payment-option" onclick="handlePaymentClick('Bank BRI')" data-price="RpXXX">
                                     <img src="/assets/img/bri.jpg" alt="">
                                     <span class="price" id="selectedDiamondPrice1" style="display: none;">Rp<span
                                             id="priceValue3">RpXXX</span></span>
                                 </div>
-                                <div class="payment-option" onclick="handlePaymentClick('Bank Payment 8')"
+                                <div class="payment-option" onclick="handlePaymentClick('Bank Mandiri')"
                                     data-price="RpXXX">
                                     <img src="/assets/img/mandiri.jpg" alt="">
                                     <span class="price" id="selectedDiamondPrice1" style="display: none;">Rp<span
@@ -206,13 +202,12 @@
                                 </div>
                             </div>
                             <div class="payment-box">
-                                <div class="payment-option" onclick="handlePaymentClick('Bank Payment 9')"
-                                    data-price="RpXXX">
+                                <div class="payment-option" onclick="handlePaymentClick('Alfamart')" data-price="RpXXX">
                                     <img src="/assets/img/alfamart.jpg" alt="">
                                     <span class="price" id="selectedDiamondPrice1" style="display: none;">Rp<span
                                             id="priceValue1">RpXXX</span></span>
                                 </div>
-                                <div class="payment-option" onclick="handlePaymentClick('Bank Payment 10')"
+                                <div class="payment-option" onclick="handlePaymentClick('Indomaret')"
                                     data-price="RpXXX">
                                     <img src="/assets/img/indomaret.webp" alt="">
                                     <span class="price" id="selectedDiamondPrice1" style="display: none;">Rp<span
@@ -236,6 +231,8 @@
                     </a>
                 </div>
             </div>
+
+
         </div>
     </div>
 
