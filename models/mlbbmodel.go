@@ -20,7 +20,7 @@ func GetProductMlbb() ([]entities.InvoiceWithProduct, error) {
 			return nil, err
 		}
 
-		// Tambahkan product ke slice products
+		// Add product to the products slice
 		products = append(products, product)
 	}
 

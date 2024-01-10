@@ -77,3 +77,26 @@ func GetLatestInvoiceWithProduct() (*entities.InvoiceWithProduct, error) {
 
 	return invoiceWithProduct, err
 }
+
+func UpdateInvoiceStatus(invoiceID int, status string) bool {
+	result, err := config.DB.Exec(`
+		UPDATE invoices SET
+			status = ?
+		WHERE invoice_id = ?
+	`,
+		status,
+		invoiceID,
+	)
+	if err != nil {
+		log.Println("Error: Unable to update invoice status:", err)
+		return false
+	}
+
+	rowsAffected, err := result.RowsAffected()
+	if err != nil {
+		log.Println("Error: Unable to get RowsAffected:", err)
+		return false
+	}
+
+	return rowsAffected > 0
+}

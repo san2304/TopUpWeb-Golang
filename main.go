@@ -26,6 +26,7 @@ func main() {
 	http.HandleFunc("/mlbb", gamecontroller.Mlbb)
 
 	http.HandleFunc("/checkout", checkoutcontroller.Checkout)
+	http.HandleFunc("/checkoutproses", checkoutcontroller.CheckoutProses)
 
 	server := &http.Server{Addr: ":8080"}
 

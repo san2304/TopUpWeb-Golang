@@ -68,12 +68,8 @@
                     <h6 style="margin-left: 20px;"><strong>QIRIS All Payment</strong></h6>
                 </div>
                 <div class="content-box2 text-center">
-                    <h5>Nominal Pembayaran : <strong>Rp{{.Harga}}</strong></h5>
-                    <p style="font-size: 14px;">Salah Nominal Pembayaran Akan Di Proses lama</p>
-                    <h5>Batas Waktu Pembayaran :</h5>
-                    <div id="countdown" class="countdown"></div>
-                    <h6 style="margin-top: 40px;">Scan kode QR berikut :</h6>
-                    <img src="/assets/img/qiris_pay.jpeg" alt="">
+                    <h1 style="color: green;">Pembayaran Sukses</h1>
+                    <img src="/assets/img/sukses.jpg" alt="">
                 </div>
             </div>
             <div class="col-md-6">
@@ -107,23 +103,6 @@
                             <td>{{.Status}}</td>
                         </tr>
                     </table>
-                </div>
-
-                <div class="confirmation-container">
-                    <div class="image-upload">
-                        <form action="/upload" method="post" enctype="multipart/form-data">
-                            <label for="file">Pilih Gambar:</label>
-                            <input type="file" name="file" id="file" accept="image/*">
-                        </form>
-                    </div>
-
-                    <div class="confirmation-button">
-                        <form action="/checkout" method="post">
-                            <input type="hidden" name="invoice_id" value="{{.InvoiceID}}">
-                            <button class="btn btn-primary" type="submit">Konfirmasi Pesanan</button>
-                        </form>
-                    </div>
-
                 </div>
             </div>
         </div>

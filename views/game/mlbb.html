@@ -11,7 +11,10 @@
 
     <h2>Invoice Form</h2>
 
-    <form action="/create-invoice" method="POST">
+    <form action="/checkout" method="POST">
+        <!-- Add CSRF Token for security -->
+        <input type="hidden" name="csrf_token" value="{{ .CSRFToken }}">
+
         <label for="dataID">Data ID:</label>
         <input type="text" id="dataID" name="dataID" required>
 
@@ -20,7 +23,7 @@
         <label>Product:</label>
         {{ range .Products }}
         <input type="radio" id="product_{{ .ProductID }}" name="product_id" value="{{ .ProductID }}" required>
-        <label for="product_{{ .ProductID }}">{{ .ProductName }} - {{ .Value }}</label>
+        <label for="product_{{ .ProductID }}">{{ .Value }}</label>
         {{ end }}
         <br>
 
